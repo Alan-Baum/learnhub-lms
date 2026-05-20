@@ -10,12 +10,16 @@ import {
 
 import { loginUser } from '../services/authService';
 
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginPage() {
 
   const [username, setUsername] = useState('');
 
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
 
   const handleLogin = async () => {
@@ -31,8 +35,8 @@ function LoginPage() {
         'token',
         data.token
       );
-
-      alert('Login successful');
+      
+      navigate('/dashboard');
 
     } catch (error) {
 
