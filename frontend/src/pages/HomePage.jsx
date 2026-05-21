@@ -74,6 +74,18 @@ function HomePage() {
               <CourseCard
                 course={course}
                 isEnrolled={isEnrolled}
+                onEnroll={() => {
+
+                  setEnrollments([
+                    ...enrollments,
+
+                    {
+                      id: Date.now(),
+                      course: course.id,
+                    },
+                  ]);
+
+                }}
               />
 
             </Grid>

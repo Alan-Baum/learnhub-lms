@@ -11,12 +11,13 @@ import { createEnrollment } from '../services/enrollmentService';
 function CourseCard({
   course,
   isEnrolled,
+  onEnroll,
 }) {
 
   const handleEnroll = async () => {
     try {
       await createEnrollment(course.id);
-      alert('Enrollment successful');
+      onEnroll();
     } catch (error) {
       console.error(error);
       alert('Enrollment failed');
