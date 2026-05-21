@@ -24,3 +24,8 @@ class EnrollmentSerializer(serializers.ModelSerializer):
             'course_title',
             'enrolled_at',
         ]
+
+        read_only_fields = [
+            'student',
+            'enrolled_at',
+        ]

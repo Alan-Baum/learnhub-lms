@@ -9,17 +9,30 @@ import {
 import CourseCard from '../components/CourseCard';
 
 import { getCourses } from '../services/courseService';
+import { getEnrollments } from '../services/enrollmentService';
 
 
 function HomePage() {
 
   const [courses, setCourses] = useState([]);
 
+  const [enrollments, setEnrollments] = useState([]);
+
+
   useEffect(() => {
 
     getCourses()
       .then((data) => {
         setCourses(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+
+    getEnrollments()
+      .then((data) => {
+        setEnrollments(data);
       })
       .catch((error) => {
         console.error(error);
@@ -41,21 +54,32 @@ function HomePage() {
 
       <Grid container spacing={3}>
 
-        {courses.map((course) => (
+        {courses.map((course) => {
 
-          <Grid
-            item
-            xs={12}
-            md={6}
-            lg={4}
-            key={course.id}
-          >
+          const isEnrolled = enrollments.some(
+            (enrollment) =>
+              enrollment.course === course.id
+          );
 
-            <CourseCard course={course} />
 
-          </Grid>
+          return (
+            <Grid
+              item
+              xs={12}
+              md={6}
+              lg={4}
+              key={course.id}
+            >
 
-        ))}
+              <CourseCard
+                course={course}
+                isEnrolled={isEnrolled}
+              />
+
+            </Grid>
+          );
+
+        })}
 
       </Grid>
 

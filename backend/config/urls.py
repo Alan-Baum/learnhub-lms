@@ -11,7 +11,11 @@ from rest_framework.authtoken.views import obtain_auth_token
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'courses', CourseViewSet)
-router.register(r'enrollments', EnrollmentViewSet)
+router.register(
+    r'enrollments',
+    EnrollmentViewSet,
+    basename='enrollment'
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

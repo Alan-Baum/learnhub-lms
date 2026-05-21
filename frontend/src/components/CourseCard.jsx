@@ -1,11 +1,29 @@
 import {
+  Button,
   Card,
   CardContent,
   Typography,
 } from '@mui/material';
 
+import { createEnrollment } from '../services/enrollmentService';
 
-function CourseCard({ course }) {
+
+function CourseCard({
+  course,
+  isEnrolled,
+}) {
+
+  const handleEnroll = async () => {
+    try {
+      await createEnrollment(course.id);
+      alert('Enrollment successful');
+    } catch (error) {
+      console.error(error);
+      alert('Enrollment failed');
+    }
+  };
+
+
   return (
     <Card>
       <CardContent>
@@ -17,9 +35,21 @@ function CourseCard({ course }) {
           {course.description}
         </Typography>
 
-        <Typography variant="subtitle2">
+        <Typography variant="subtitle2" sx={{ mb: 2 }}>
           Teacher: {course.teacher_name}
         </Typography>
+
+        <Button
+          variant="contained"
+          onClick={handleEnroll}
+          disabled={isEnrolled}
+        >
+
+          {isEnrolled
+            ? 'Enrolled'
+            : 'Enroll'}
+
+        </Button>
       </CardContent>
     </Card>
   );
