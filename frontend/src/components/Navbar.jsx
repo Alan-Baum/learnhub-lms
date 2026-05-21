@@ -1,60 +1,42 @@
-import {
-  AppBar,
-  Button,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { useEffect, useState } from "react";
 
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const isLoggedIn = localStorage.getItem('token');
-
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(Boolean(token));
+  }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    alert('Logged out');
-    window.location.href = '/';
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    window.location.href = "/login";
   };
-
 
   return (
     <AppBar position="static">
-
       <Toolbar>
-
-        <Typography
-          variant="h6"
-          sx={{ flexGrow: 1 }}
-        >
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
           LearnHub LMS
         </Typography>
 
-        <Button
-          color="inherit"
-          href="/"
-        >
+        <Button color="inherit" href="/">
           Courses
         </Button>
 
         {isLoggedIn ? (
-          <Button
-            color="inherit"
-            onClick={handleLogout}
-          >
+          <Button color="inherit" onClick={handleLogout}>
             Logout
           </Button>
         ) : (
-          <Button
-            color="inherit"
-            href="/login"
-          >
+          <Button color="inherit" href="/login">
             Login
           </Button>
         )}
-
       </Toolbar>
-
     </AppBar>
   );
 }
