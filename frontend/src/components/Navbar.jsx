@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,24 +18,33 @@ function Navbar() {
 
   return (
     <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+      <Toolbar sx={{ position: "relative" }}>
+        <Typography
+          variant="h6"
+          sx={{
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
           LearnHub LMS
         </Typography>
 
-        <Button color="inherit" href="/">
-          Courses
-        </Button>
+        <Box sx={{ ml: "auto" }}>
+          <Button color="inherit" href="/">
+            Courses
+          </Button>
 
-        {isLoggedIn ? (
-          <Button color="inherit" onClick={handleLogout}>
-            Logout
-          </Button>
-        ) : (
-          <Button color="inherit" href="/login">
-            Login
-          </Button>
-        )}
+          {isLoggedIn ? (
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
+          ) : (
+            <Button color="inherit" href="/login">
+              Login
+            </Button>
+          )}
+        </Box>
       </Toolbar>
     </AppBar>
   );

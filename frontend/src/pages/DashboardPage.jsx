@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -11,14 +12,14 @@ import {
 
 import { getCurrentUser } from "../services/userService";
 import { getEnrollments } from "../services/enrollmentService";
-import { getCourses } from "../services/courseService";
-import { useNavigate } from "react-router-dom";
+import { getCourses, deleteCourse } from "../services/courseService";
 
 function DashboardPage() {
   const [user, setUser] = useState(null);
   const [enrollments, setEnrollments] = useState([]);
   const [teacherCourses, setTeacherCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function DashboardPage() {
       .then(([userData, enrollmentData, courseData]) => {
         setUser(userData);
         setEnrollments(enrollmentData);
+
         const teacherOwnedCourses = courseData.filter(
           (course) => course.teacher_name === userData.username,
         );
@@ -39,6 +41,20 @@ function DashboardPage() {
         setLoading(false);
       });
   }, []);
+
+  const handleDeleteCourse = async (courseId) => {
+    try {
+      await deleteCourse(courseId);
+
+      setTeacherCourses(
+        teacherCourses.filter((course) => course.id !== courseId),
+      );
+    } catch (error) {
+      console.error(error);
+      alert("Course deletion failed");
+    }
+  };
+
   if (loading) {
     return (
       <Container sx={{ mt: 6 }}>
@@ -46,6 +62,7 @@ function DashboardPage() {
       </Container>
     );
   }
+
   return (
     <Container sx={{ mt: 6 }}>
       <Typography variant="h3">
@@ -79,6 +96,7 @@ function DashboardPage() {
                   >
                     Create Course
                   </Button>
+
                   {teacherCourses.map((course) => (
                     <Card key={course.id} sx={{ mt: 2 }}>
                       <CardContent>
@@ -87,6 +105,23 @@ function DashboardPage() {
                         <Typography variant="body2" sx={{ mt: 1 }}>
                           {course.description}
                         </Typography>
+
+                        <Button
+                          variant="contained"
+                          sx={{ mt: 2, mr: 2 }}
+                          onClick={() => navigate(`/edit-course/${course.id}`)}
+                        >
+                          Edit Course
+                        </Button>
+
+                        <Button
+                          variant="contained"
+                          color="error"
+                          sx={{ mt: 2 }}
+                          onClick={() => handleDeleteCourse(course.id)}
+                        >
+                          Delete Course
+                        </Button>
                       </CardContent>
                     </Card>
                   ))}

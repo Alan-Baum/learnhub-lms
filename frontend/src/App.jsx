@@ -12,6 +12,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import CreateCoursePage from "./pages/CreateCoursePage";
 
+import EditCoursePage from "./pages/EditCoursePage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +25,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="/create-course" element={<CreateCoursePage />} />
+
+        <Route path="/edit-course/:courseId" element={<EditCoursePage />} />
 
         <Route
           path="/dashboard"
