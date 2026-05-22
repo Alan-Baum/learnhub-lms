@@ -11,11 +11,14 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
+
         fields = [
-            'id',
-            'title',
-            'description',
-            'teacher',
-            'teacher_name',
-            'created_at',
+        'id',
+        'title',
+        'description',
+        'teacher',
+        'teacher_name',
+        'created_at',
         ]
+
+        read_only_fields = ['teacher']

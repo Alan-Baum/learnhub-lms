@@ -11,17 +11,26 @@ import {
 
 import { getCurrentUser } from "../services/userService";
 import { getEnrollments } from "../services/enrollmentService";
+import { getCourses } from "../services/courseService";
+import { useNavigate } from "react-router-dom";
 
 function DashboardPage() {
   const [user, setUser] = useState(null);
   const [enrollments, setEnrollments] = useState([]);
+  const [teacherCourses, setTeacherCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    Promise.all([getCurrentUser(), getEnrollments()])
-      .then(([userData, enrollmentData]) => {
+    Promise.all([getCurrentUser(), getEnrollments(), getCourses()])
+      .then(([userData, enrollmentData, courseData]) => {
         setUser(userData);
         setEnrollments(enrollmentData);
+        const teacherOwnedCourses = courseData.filter(
+          (course) => course.teacher_name === userData.username,
+        );
+
+        setTeacherCourses(teacherOwnedCourses);
       })
       .catch((error) => {
         console.error(error);
@@ -50,6 +59,41 @@ function DashboardPage() {
           <Typography sx={{ mt: 2 }}>Welcome, {user.username}.</Typography>
 
           <Typography sx={{ mt: 1 }}>Role: {user.role}</Typography>
+
+          {user.role === "teacher" && (
+            <Box sx={{ mt: 4 }}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h5" gutterBottom>
+                    Teacher Tools
+                  </Typography>
+
+                  <Typography>
+                    Manage your courses and create new learning content.
+                  </Typography>
+
+                  <Button
+                    variant="contained"
+                    sx={{ mt: 2 }}
+                    onClick={() => navigate("/create-course")}
+                  >
+                    Create Course
+                  </Button>
+                  {teacherCourses.map((course) => (
+                    <Card key={course.id} sx={{ mt: 2 }}>
+                      <CardContent>
+                        <Typography variant="h6">{course.title}</Typography>
+
+                        <Typography variant="body2" sx={{ mt: 1 }}>
+                          {course.description}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </CardContent>
+              </Card>
+            </Box>
+          )}
 
           {user.role === "student" && (
             <Box sx={{ mt: 4 }}>
