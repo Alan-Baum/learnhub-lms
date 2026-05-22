@@ -57,14 +57,26 @@ function DashboardPage() {
 
   if (loading) {
     return (
-      <Container sx={{ mt: 6 }}>
+      <Container
+        maxWidth="md"
+        sx={{
+          mt: 4,
+          px: { xs: 2, sm: 3 },
+        }}
+      >
         <Typography variant="h5">Loading dashboard...</Typography>
       </Container>
     );
   }
 
   return (
-    <Container sx={{ mt: 6 }}>
+    <Container
+      maxWidth="md"
+      sx={{
+        mt: 4,
+        px: { xs: 2, sm: 3 },
+      }}
+    >
       <Typography variant="h3">
         {user?.role === "student" && "Student Dashboard"}
         {user?.role === "teacher" && "Teacher Dashboard"}
@@ -108,7 +120,12 @@ function DashboardPage() {
 
                         <Button
                           variant="contained"
-                          sx={{ mt: 2, mr: 2 }}
+                          sx={{
+                            mt: 2,
+                            mr: { xs: 0, sm: 2 },
+                            mb: { xs: 2, sm: 0 },
+                            width: { xs: "100%", sm: "auto" },
+                          }}
                           onClick={() => navigate(`/edit-course/${course.id}`)}
                         >
                           Edit Course
@@ -117,7 +134,10 @@ function DashboardPage() {
                         <Button
                           variant="contained"
                           color="error"
-                          sx={{ mt: 2 }}
+                          sx={{
+                            mt: 2,
+                            width: { xs: "100%", sm: "auto" },
+                          }}
                           onClick={() => handleDeleteCourse(course.id)}
                         >
                           Delete Course
