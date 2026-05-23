@@ -51,11 +51,11 @@ function CourseDetailPage() {
             {course.description}
           </Typography>
 
-          <Typography variant="h6" sx={{ mt: 4 }}>
+          <Typography variant="h6" sx={{ mt: 2 }}>
             Teacher: {course.teacher_name}
           </Typography>
 
-          <Typography variant="body2" color="success.main" sx={{ mt: 4 }}>
+          <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
             You are enrolled in this course.
           </Typography>
           <Button

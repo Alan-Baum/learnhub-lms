@@ -1,24 +1,45 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Container,
+  Snackbar,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import { createCourse } from "../services/courseService";
 
 function CreateCoursePage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const navigate = useNavigate();
 
   const handleCreateCourse = async () => {
     if (!title || !description) {
-      alert("Please enter a title and description.");
+      setSnackbarSeverity("error");
+      setSnackbarMessage("Please enter a title and description.");
+      setOpenSnackbar(true);
       return;
     }
+
     try {
       await createCourse(title, description);
-      navigate("/");
+
+      setSnackbarSeverity("success");
+      setSnackbarMessage("Course created successfully.");
+      setOpenSnackbar(true);
+
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1200);
     } catch (error) {
       console.error(error);
       alert("Course creation failed");
@@ -58,6 +79,23 @@ function CreateCoursePage() {
         >
           Create Course
         </Button>
+
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={3000}
+          onClose={() => setOpenSnackbar(false)}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+        >
+          <Alert
+            severity={snackbarSeverity}
+            onClose={() => setOpenSnackbar(false)}
+          >
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
       </Box>
     </Container>
   );
