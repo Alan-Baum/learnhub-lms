@@ -174,7 +174,13 @@ function DashboardPage() {
                             Enrolled and ready to continue learning.
                           </Typography>
 
-                          <Button variant="contained" sx={{ mt: 2 }}>
+                          <Button
+                            variant="contained"
+                            sx={{ mt: 2 }}
+                            onClick={() =>
+                              navigate(`/course/${enrollment.course}`)
+                            }
+                          >
                             Continue Learning
                           </Button>
                         </CardContent>

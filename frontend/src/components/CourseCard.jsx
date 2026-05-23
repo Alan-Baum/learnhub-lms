@@ -1,29 +1,34 @@
+import { useState } from "react";
+
 import {
+  Alert,
   Button,
   Card,
   CardContent,
+  Snackbar,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
-import { createEnrollment } from '../services/enrollmentService';
+import { createEnrollment } from "../services/enrollmentService";
 
-
-function CourseCard({
-  course,
-  isEnrolled,
-  onEnroll,
-}) {
+function CourseCard({ course, isEnrolled, onEnroll }) {
+  const [message, setMessage] = useState("");
+  const [severity, setSeverity] = useState("success");
 
   const handleEnroll = async () => {
     try {
       await createEnrollment(course.id);
       onEnroll();
+      setMessage("Enrollment successful");
+      setSeverity("success");
     } catch (error) {
       console.error(error);
-      alert('Enrollment failed');
+      setMessage(
+        "Enrollment failed. You may already be enrolled in this course.",
+      );
+      setSeverity("error");
     }
   };
-
 
   return (
     <Card>
@@ -45,12 +50,18 @@ function CourseCard({
           onClick={handleEnroll}
           disabled={isEnrolled}
         >
-
-          {isEnrolled
-            ? 'Enrolled'
-            : 'Enroll'}
-
+          {isEnrolled ? "Enrolled" : "Enroll"}
         </Button>
+
+        <Snackbar
+          open={Boolean(message)}
+          autoHideDuration={3000}
+          onClose={() => setMessage("")}
+        >
+          <Alert severity={severity} onClose={() => setMessage("")}>
+            {message}
+          </Alert>
+        </Snackbar>
       </CardContent>
     </Card>
   );

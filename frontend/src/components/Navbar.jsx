@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const location = useLocation();
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(Boolean(token));
-  }, []);
+  }, [location]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");

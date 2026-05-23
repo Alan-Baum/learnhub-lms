@@ -1,62 +1,51 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 import {
+  Alert,
   Box,
   Button,
   Container,
+  Snackbar,
   TextField,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
-import { loginUser } from '../services/authService';
+import { loginUser } from "../services/authService";
 
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const [username, setUsername] = useState("");
 
-  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState("");
 
-  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const navigate = useNavigate();
 
-
   const handleLogin = async () => {
-
     try {
+      setLoading(true);
+      const data = await loginUser(username, password);
 
-      const data = await loginUser(
-        username,
-        password
-      );
+      localStorage.setItem("token", data.token);
 
-      localStorage.setItem(
-        'token',
-        data.token
-      );
-      
-      navigate('/dashboard');
-
+      navigate("/dashboard");
     } catch (error) {
-
       console.error(error);
 
-      alert('Login failed');
-
+      setOpenSnackbar(true);
+    } finally {
+      setLoading(false);
     }
   };
 
-
   return (
     <Container maxWidth="sm">
-
       <Box sx={{ mt: 8 }}>
-
-        <Typography
-          variant="h4"
-          gutterBottom
-        >
+        <Typography variant="h4" gutterBottom>
           Login
         </Typography>
 
@@ -65,9 +54,7 @@ function LoginPage() {
           fullWidth
           margin="normal"
           value={username}
-          onChange={(e) =>
-            setUsername(e.target.value)
-          }
+          onChange={(e) => setUsername(e.target.value)}
         />
 
         <TextField
@@ -76,9 +63,7 @@ function LoginPage() {
           fullWidth
           margin="normal"
           value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <Button
@@ -86,12 +71,25 @@ function LoginPage() {
           fullWidth
           sx={{ mt: 2 }}
           onClick={handleLogin}
+          disabled={loading}
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </Button>
 
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={3000}
+          onClose={() => setOpenSnackbar(false)}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+        >
+          <Alert severity="error" onClose={() => setOpenSnackbar(false)}>
+            Login failed
+          </Alert>
+        </Snackbar>
       </Box>
-
     </Container>
   );
 }
