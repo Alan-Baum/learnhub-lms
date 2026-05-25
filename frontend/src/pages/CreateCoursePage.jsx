@@ -19,6 +19,7 @@ function CreateCoursePage() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarSeverity, setSnackbarSeverity] = useState("error");
   const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,6 +31,8 @@ function CreateCoursePage() {
       return;
     }
 
+    setLoading(true);
+
     try {
       await createCourse(title, description);
 
@@ -38,11 +41,16 @@ function CreateCoursePage() {
       setOpenSnackbar(true);
 
       setTimeout(() => {
+        setLoading(false);
         navigate("/dashboard");
       }, 1200);
     } catch (error) {
       console.error(error);
-      alert("Course creation failed");
+
+      setLoading(false);
+      setSnackbarSeverity("error");
+      setSnackbarMessage("Course creation failed.");
+      setOpenSnackbar(true);
     }
   };
 
@@ -76,8 +84,9 @@ function CreateCoursePage() {
           fullWidth
           sx={{ mt: 2 }}
           onClick={handleCreateCourse}
+          disabled={loading}
         >
-          Create Course
+          {loading ? "Creating..." : "Create Course"}
         </Button>
 
         <Snackbar

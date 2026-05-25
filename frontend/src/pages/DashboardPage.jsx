@@ -2,25 +2,30 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
+  Alert,
   Box,
   Button,
   Card,
   CardContent,
   Container,
   Typography,
+  Snackbar,
 } from "@mui/material";
 
 import { getCurrentUser } from "../services/userService";
 import { getEnrollments } from "../services/enrollmentService";
 import { getCourses, deleteCourse } from "../services/courseService";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function DashboardPage() {
   const [user, setUser] = useState(null);
   const [enrollments, setEnrollments] = useState([]);
   const [teacherCourses, setTeacherCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
   const navigate = useNavigate();
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
   useEffect(() => {
     Promise.all([getCurrentUser(), getEnrollments(), getCourses()])
@@ -43,15 +48,29 @@ function DashboardPage() {
   }, []);
 
   const handleDeleteCourse = async (courseId) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this course?",
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
     try {
       await deleteCourse(courseId);
 
       setTeacherCourses(
         teacherCourses.filter((course) => course.id !== courseId),
       );
+
+      setSnackbarMessage("Course deleted successfully.");
+      setSnackbarSeverity("success");
+      setOpenSnackbar(true);
     } catch (error) {
       console.error(error);
-      alert("Course deletion failed");
+      setSnackbarMessage("Course deletion failed.");
+      setSnackbarSeverity("error");
+      setOpenSnackbar(true);
     }
   };
 
@@ -60,11 +79,12 @@ function DashboardPage() {
       <Container
         maxWidth="md"
         sx={{
-          mt: 4,
-          px: { xs: 2, sm: 3 },
+          mt: 6,
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        <Typography variant="h5">Loading dashboard...</Typography>
+        <CircularProgress />
       </Container>
     );
   }
@@ -109,42 +129,50 @@ function DashboardPage() {
                     Create Course
                   </Button>
 
-                  {teacherCourses.map((course) => (
-                    <Card key={course.id} sx={{ mt: 2 }}>
-                      <CardContent>
-                        <Typography variant="h6">{course.title}</Typography>
+                  {teacherCourses.length === 0 ? (
+                    <Typography sx={{ mt: 3 }}>
+                      You have not created any courses yet.
+                    </Typography>
+                  ) : (
+                    teacherCourses.map((course) => (
+                      <Card key={course.id} sx={{ mt: 2 }}>
+                        <CardContent>
+                          <Typography variant="h6">{course.title}</Typography>
 
-                        <Typography variant="body2" sx={{ mt: 1 }}>
-                          {course.description}
-                        </Typography>
+                          <Typography variant="body2" sx={{ mt: 1 }}>
+                            {course.description}
+                          </Typography>
 
-                        <Button
-                          variant="contained"
-                          sx={{
-                            mt: 2,
-                            mr: { xs: 0, sm: 2 },
-                            mb: { xs: 2, sm: 0 },
-                            width: { xs: "100%", sm: "auto" },
-                          }}
-                          onClick={() => navigate(`/edit-course/${course.id}`)}
-                        >
-                          Edit Course
-                        </Button>
+                          <Button
+                            variant="contained"
+                            sx={{
+                              mt: 2,
+                              mr: { xs: 0, sm: 2 },
+                              mb: { xs: 2, sm: 0 },
+                              width: { xs: "100%", sm: "auto" },
+                            }}
+                            onClick={() =>
+                              navigate(`/edit-course/${course.id}`)
+                            }
+                          >
+                            Edit Course
+                          </Button>
 
-                        <Button
-                          variant="contained"
-                          color="error"
-                          sx={{
-                            mt: 2,
-                            width: { xs: "100%", sm: "auto" },
-                          }}
-                          onClick={() => handleDeleteCourse(course.id)}
-                        >
-                          Delete Course
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  ))}
+                          <Button
+                            variant="contained"
+                            color="error"
+                            sx={{
+                              mt: 2,
+                              width: { xs: "100%", sm: "auto" },
+                            }}
+                            onClick={() => handleDeleteCourse(course.id)}
+                          >
+                            Delete Course
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    ))
+                  )}
                 </CardContent>
               </Card>
             </Box>
@@ -193,6 +221,22 @@ function DashboardPage() {
           )}
         </>
       )}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={() => setOpenSnackbar(false)}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+      >
+        <Alert
+          severity={snackbarSeverity}
+          onClose={() => setOpenSnackbar(false)}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }

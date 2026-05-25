@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Container,
+  Snackbar,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import { getCourses, updateCourse } from "../services/courseService";
 
 function EditCoursePage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const { courseId } = useParams();
   const navigate = useNavigate();
@@ -31,16 +44,32 @@ function EditCoursePage() {
 
   const handleUpdateCourse = async () => {
     if (!title || !description) {
-      alert("Please enter a title and description.");
+      setSnackbarSeverity("error");
+      setSnackbarMessage("Please enter a title and description.");
+      setOpenSnackbar(true);
       return;
     }
 
+    setLoading(true);
+
     try {
       await updateCourse(courseId, title, description);
-      navigate("/dashboard");
+
+      setSnackbarSeverity("success");
+      setSnackbarMessage("Course updated successfully.");
+      setOpenSnackbar(true);
+
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/dashboard");
+      }, 1200);
     } catch (error) {
       console.error(error);
-      alert("Course update failed");
+
+      setLoading(false);
+      setSnackbarSeverity("error");
+      setSnackbarMessage("Course update failed.");
+      setOpenSnackbar(true);
     }
   };
 
@@ -74,9 +103,27 @@ function EditCoursePage() {
           fullWidth
           sx={{ mt: 2 }}
           onClick={handleUpdateCourse}
+          disabled={loading}
         >
-          Save Changes
+          {loading ? "Saving..." : "Save Changes"}
         </Button>
+
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={3000}
+          onClose={() => setOpenSnackbar(false)}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+        >
+          <Alert
+            severity={snackbarSeverity}
+            onClose={() => setOpenSnackbar(false)}
+          >
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
       </Box>
     </Container>
   );
