@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 import {
   Alert,
   Box,
@@ -8,24 +10,33 @@ import {
   Card,
   CardContent,
   Container,
-  Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Snackbar,
+  Typography,
 } from "@mui/material";
 
 import { getCurrentUser } from "../services/userService";
 import { getEnrollments } from "../services/enrollmentService";
 import { getCourses, deleteCourse } from "../services/courseService";
-import CircularProgress from "@mui/material/CircularProgress";
 
 function DashboardPage() {
   const [user, setUser] = useState(null);
   const [enrollments, setEnrollments] = useState([]);
   const [teacherCourses, setTeacherCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
-  const navigate = useNavigate();
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [selectedCourseId, setSelectedCourseId] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     Promise.all([getCurrentUser(), getEnrollments(), getCourses()])
@@ -47,30 +58,31 @@ function DashboardPage() {
       });
   }, []);
 
-  const handleDeleteCourse = async (courseId) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this course?",
-    );
+  const handleDeleteCourse = (courseId) => {
+    setSelectedCourseId(courseId);
+    setDeleteDialogOpen(true);
+  };
 
-    if (!confirmed) {
-      return;
-    }
-
+  const confirmDeleteCourse = async () => {
     try {
-      await deleteCourse(courseId);
+      await deleteCourse(selectedCourseId);
 
       setTeacherCourses(
-        teacherCourses.filter((course) => course.id !== courseId),
+        teacherCourses.filter((course) => course.id !== selectedCourseId),
       );
 
-      setSnackbarMessage("Course deleted successfully.");
       setSnackbarSeverity("success");
+      setSnackbarMessage("Course deleted successfully.");
       setOpenSnackbar(true);
     } catch (error) {
       console.error(error);
-      setSnackbarMessage("Course deletion failed.");
+
       setSnackbarSeverity("error");
+      setSnackbarMessage("Course deletion failed.");
       setOpenSnackbar(true);
+    } finally {
+      setDeleteDialogOpen(false);
+      setSelectedCourseId(null);
     }
   };
 
@@ -144,6 +156,7 @@ function DashboardPage() {
                           </Typography>
 
                           <Button
+                            aria-label="Edit course"
                             variant="contained"
                             sx={{
                               mt: 2,
@@ -159,6 +172,7 @@ function DashboardPage() {
                           </Button>
 
                           <Button
+                            aria-label="Delete course"
                             variant="contained"
                             color="error"
                             sx={{
@@ -203,6 +217,7 @@ function DashboardPage() {
                           </Typography>
 
                           <Button
+                            aria-label="Continue learning"
                             variant="contained"
                             sx={{ mt: 2 }}
                             onClick={() =>
@@ -221,6 +236,38 @@ function DashboardPage() {
           )}
         </>
       )}
+
+      <Dialog
+        open={deleteDialogOpen}
+        onClose={() => setDeleteDialogOpen(false)}
+      >
+        <DialogTitle>Delete Course</DialogTitle>
+
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to delete this course?
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions>
+          <Button
+            aria-label="Cancel delete"
+            onClick={() => setDeleteDialogOpen(false)}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            aria-label="Confirm delete"
+            color="error"
+            variant="contained"
+            onClick={confirmDeleteCourse}
+          >
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       <Snackbar
         open={openSnackbar}
         autoHideDuration={3000}

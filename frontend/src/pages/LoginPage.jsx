@@ -67,6 +67,7 @@ function LoginPage() {
         />
 
         <Button
+          aria-label="Login"
           variant="contained"
           fullWidth
           sx={{ mt: 2 }}

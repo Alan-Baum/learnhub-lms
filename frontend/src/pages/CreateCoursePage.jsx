@@ -80,6 +80,7 @@ function CreateCoursePage() {
         />
 
         <Button
+          aria-label="Create course"
           variant="contained"
           fullWidth
           sx={{ mt: 2 }}
