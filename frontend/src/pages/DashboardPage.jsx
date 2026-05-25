@@ -109,7 +109,7 @@ function DashboardPage() {
         px: { xs: 2, sm: 3 },
       }}
     >
-      <Typography variant="h3">
+      <Typography variant="h4" component="h1">
         {user?.role === "student" && "Student Dashboard"}
         {user?.role === "teacher" && "Teacher Dashboard"}
         {user?.role === "admin" && "Admin Dashboard"}
@@ -125,7 +125,7 @@ function DashboardPage() {
             <Box sx={{ mt: 4 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant="h5" component="h2" gutterBottom>
                     Teacher Tools
                   </Typography>
 
@@ -149,7 +149,9 @@ function DashboardPage() {
                     teacherCourses.map((course) => (
                       <Card key={course.id} sx={{ mt: 2 }}>
                         <CardContent>
-                          <Typography variant="h6">{course.title}</Typography>
+                          <Typography variant="h6" component="h3">
+                            {course.title}
+                          </Typography>
 
                           <Typography variant="body2" sx={{ mt: 1 }}>
                             {course.description}
@@ -196,7 +198,7 @@ function DashboardPage() {
             <Box sx={{ mt: 4 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant="h5" component="h2" gutterBottom>
                     My Learning
                   </Typography>
 
@@ -208,7 +210,7 @@ function DashboardPage() {
                     enrollments.map((enrollment) => (
                       <Card key={enrollment.id} sx={{ mt: 2 }}>
                         <CardContent>
-                          <Typography variant="h6">
+                          <Typography variant="h6" component="h3">
                             {enrollment.course_title}
                           </Typography>
 

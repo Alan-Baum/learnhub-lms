@@ -14,26 +14,28 @@ function App() {
     <BrowserRouter>
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
 
-        <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <DashboardPage />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route path="/create-course" element={<CreateCoursePage />} />
+          <Route path="/create-course" element={<CreateCoursePage />} />
 
-        <Route path="/edit-course/:courseId" element={<EditCoursePage />} />
+          <Route path="/edit-course/:courseId" element={<EditCoursePage />} />
 
-        <Route path="/course/:courseId" element={<CourseDetailPage />} />
-      </Routes>
+          <Route path="/course/:courseId" element={<CourseDetailPage />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }
