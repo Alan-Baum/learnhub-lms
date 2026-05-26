@@ -1,26 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import {
-  Container,
-  Grid,
-  Typography,
-} from '@mui/material';
+import { Box, Container, Typography } from "@mui/material";
+import CourseCard from "../components/CourseCard";
 
-import CourseCard from '../components/CourseCard';
-
-import { getCourses } from '../services/courseService';
-import { getEnrollments } from '../services/enrollmentService';
-
+import { getCourses } from "../services/courseService";
+import { getEnrollments } from "../services/enrollmentService";
 
 function HomePage() {
-
   const [courses, setCourses] = useState([]);
 
   const [enrollments, setEnrollments] = useState([]);
 
-
   useEffect(() => {
-
     getCourses()
       .then((data) => {
         setCourses(data);
@@ -29,7 +20,6 @@ function HomePage() {
         console.error(error);
       });
 
-
     getEnrollments()
       .then((data) => {
         setEnrollments(data);
@@ -37,64 +27,52 @@ function HomePage() {
       .catch((error) => {
         console.error(error);
       });
-
   }, []);
 
-
   return (
-    <Container sx={{ mt: 6 }}>
-
-      <Typography
-        variant="h3"
-        component="h1"
-        gutterBottom
-      >
+    <Container sx={{ mt: 3 }}>
+      <Typography variant="h4" component="h1" gutterBottom>
         Available Courses
       </Typography>
 
-      <Grid container spacing={3}>
-
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 3,
+        }}
+      >
         {courses.map((course) => {
-
           const isEnrolled = enrollments.some(
-            (enrollment) =>
-              enrollment.course === course.id
+            (enrollment) => enrollment.course === course.id,
           );
 
-
           return (
-            <Grid
-              item
-              xs={12}
-              md={6}
-              lg={4}
+            <Box
               key={course.id}
+              sx={{
+                width: "100%",
+                maxWidth: 900,
+              }}
             >
-
               <CourseCard
                 course={course}
                 isEnrolled={isEnrolled}
                 onEnroll={() => {
-
                   setEnrollments([
                     ...enrollments,
-
                     {
                       id: Date.now(),
                       course: course.id,
                     },
                   ]);
-
                 }}
               />
-
-            </Grid>
+            </Box>
           );
-
         })}
-
-      </Grid>
-
+      </Box>
     </Container>
   );
 }

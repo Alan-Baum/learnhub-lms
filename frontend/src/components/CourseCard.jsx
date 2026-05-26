@@ -31,13 +31,30 @@ function CourseCard({ course, isEnrolled, onEnroll }) {
   };
 
   return (
-    <Card>
+    <Card
+      sx={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        textAlign: "center",
+        borderRadius: 3,
+        boxShadow: 3,
+      }}
+    >
       <CardContent>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h5" component="h2" gutterBottom>
           {course.title}
         </Typography>
 
-        <Typography variant="body2" sx={{ mb: 2 }}>
+        <Typography
+          variant="body2"
+          sx={{
+            mb: 1,
+            minHeight: 40,
+          }}
+        >
           {course.description}
         </Typography>
 
@@ -47,8 +64,15 @@ function CourseCard({ course, isEnrolled, onEnroll }) {
 
         <Button
           variant="contained"
+          color={isEnrolled ? "success" : "primary"}
           onClick={handleEnroll}
-          disabled={isEnrolled}
+          disabled={false}
+          sx={{
+            width: "100%",
+            maxWidth: 220,
+            opacity: 1,
+            cursor: isEnrolled ? "default" : "pointer",
+          }}
         >
           {isEnrolled ? "Enrolled" : "Enroll"}
         </Button>
@@ -57,6 +81,10 @@ function CourseCard({ course, isEnrolled, onEnroll }) {
           open={Boolean(message)}
           autoHideDuration={3000}
           onClose={() => setMessage("")}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
         >
           <Alert severity={severity} onClose={() => setMessage("")}>
             {message}
