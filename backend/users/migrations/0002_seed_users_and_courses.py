@@ -1,5 +1,5 @@
 from django.db import migrations
-
+from django.contrib.auth.hashers import make_password
 
 def seed_users_and_courses(apps, schema_editor):
     User = apps.get_model("users", "CustomUser")
@@ -12,7 +12,7 @@ def seed_users_and_courses(apps, schema_editor):
             "role": "teacher",
         },
     )
-    teacher.set_password("password123")
+    teacher.password = make_password("password123")
     teacher.save()
 
     student, _ = User.objects.get_or_create(
@@ -22,7 +22,7 @@ def seed_users_and_courses(apps, schema_editor):
             "role": "student",
         },
     )
-    student.set_password("password123")
+    student.password = make_password("password123")
     student.save()
 
     Course.objects.get_or_create(
