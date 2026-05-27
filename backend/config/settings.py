@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-_x*=cz8g!k0g!a3miy_pz4)(5w^n2ya1jtdt9yn-b5v-br)fvw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    "learnhub-lms-production-985e.up.railway.app",
+]
 
 # Application definition
 
@@ -127,6 +128,16 @@ STATIC_URL = 'static/'
 
 CORS_ALLOWED_ORIGINS = [
     "https://learnhub-lms-alan.netlify.app",
+    "https://learnhub-lms-production-985e.up.railway.app",
+]
+
+ALLOWED_HOSTS = [
+    "learnhub-lms-production-985e.up.railway.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://learnhub-lms-alan.netlify.app",
+    "https://learnhub-lms-production-985e.up.railway.app",
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
