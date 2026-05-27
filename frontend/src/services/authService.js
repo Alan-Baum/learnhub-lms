@@ -2,7 +2,7 @@ const COURSES_URL =
   "https://learnhub-lms-production-985e.up.railway.app/api/courses/";
 
 const LOGIN_URL =
-  "https://learnhub-lms-production-985e.up.railway.app/api/token/";
+  "https://learnhub-lms-production-985e.up.railway.app/api/login/";
 
 export async function loginUser(username, password) {
   const response = await fetch(LOGIN_URL, {
