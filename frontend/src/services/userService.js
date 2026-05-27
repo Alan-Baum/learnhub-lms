@@ -1,6 +1,9 @@
 const COURSES_URL =
   "https://learnhub-lms-production-985e.up.railway.app/api/courses/";
 
+const CURRENT_USER_URL =
+  "https://learnhub-lms-production-985e.up.railway.app/api/current-user/";
+
 export async function getCurrentUser() {
   const token = localStorage.getItem("token");
 
