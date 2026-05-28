@@ -21,6 +21,26 @@ The project demonstrates full-stack web development skills including authenticat
 
 ---
 
+## Live Deployment
+
+Frontend:
+https://learnhub-lms-alan.netlify.app
+
+Backend API:
+https://learnhub-lms-production-985e.up.railway.app/api/courses/
+
+## Demo Accounts
+
+### Teacher Account
+
+Username: teacher1  
+Password: password123
+
+### Student Account
+
+Username: student1  
+Password: password123
+
 ## Features
 
 ### Teacher Features
@@ -92,6 +112,7 @@ The project demonstrates full-stack web development skills including authenticat
 git clone https://github.com/Alan-Baum/learnhub-lms.git
 cd learnhub-lms
 ```
+
 ### Backend Setup
 
 ```bash
