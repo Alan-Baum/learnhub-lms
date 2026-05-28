@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Alert,
@@ -15,7 +16,19 @@ function CourseCard({ course, isEnrolled, onEnroll }) {
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("success");
 
+  const navigate = useNavigate();
+  const isLoggedIn = Boolean(localStorage.getItem("token"));
+
   const handleEnroll = async () => {
+    if (!isLoggedIn) {
+      navigate("/login");
+      return;
+    }
+
+    if (isEnrolled) {
+      return;
+    }
+
     try {
       await createEnrollment(course.id);
       onEnroll();
@@ -62,6 +75,12 @@ function CourseCard({ course, isEnrolled, onEnroll }) {
           Teacher: {course.teacher_name}
         </Typography>
 
+        {!isLoggedIn && (
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+            Login to enroll in this course.
+          </Typography>
+        )}
+
         <Button
           variant="contained"
           color={isEnrolled ? "success" : "primary"}
@@ -74,7 +93,7 @@ function CourseCard({ course, isEnrolled, onEnroll }) {
             cursor: isEnrolled ? "default" : "pointer",
           }}
         >
-          {isEnrolled ? "Enrolled" : "Enroll"}
+          {isEnrolled ? "Enrolled" : isLoggedIn ? "Enroll" : "Login"}
         </Button>
 
         <Snackbar
