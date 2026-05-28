@@ -5,10 +5,15 @@ import {
   Box,
   Button,
   Container,
+  IconButton,
+  InputAdornment,
   Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
+
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 import { loginUser } from "../services/authService";
 
@@ -16,16 +21,17 @@ import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
-
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
-
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
     try {
       setLoading(true);
       const data = await loginUser(username, password);
@@ -35,7 +41,6 @@ function LoginPage() {
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
-
       setOpenSnackbar(true);
     } finally {
       setLoading(false);
@@ -44,8 +49,8 @@ function LoginPage() {
 
   return (
     <Container maxWidth="sm">
-      <Box sx={{ mt: 8 }}>
-        <Typography variant="h4" gutterBottom>
+      <Box component="form" onSubmit={handleLogin} sx={{ mt: 8 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
           Login
         </Typography>
 
@@ -59,19 +64,32 @@ function LoginPage() {
 
         <TextField
           label="Password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           fullWidth
           margin="normal"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="Toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
 
         <Button
           aria-label="Login"
+          type="submit"
           variant="contained"
           fullWidth
           sx={{ mt: 2 }}
-          onClick={handleLogin}
           disabled={loading}
         >
           {loading ? "Logging in..." : "Login"}
