@@ -65,13 +65,16 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <IconButton
-          aria-label="Toggle password visibility"
-          onClick={() => setShowPassword(!showPassword)}
-          edge="end"
+        <Button
+          aria-label="Login"
+          type="submit"
+          variant="contained"
+          fullWidth
+          sx={{ mt: 2 }}
+          disabled={loading}
         >
-          {showPassword ? "Hide" : "Show"}
-        </IconButton>
+          {loading ? "Logging in..." : "Login"}
+        </Button>
 
         <Snackbar
           open={openSnackbar}
