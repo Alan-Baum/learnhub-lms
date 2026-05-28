@@ -5,8 +5,6 @@ import {
   Box,
   Button,
   Container,
-  IconButton,
-  InputAdornment,
   Snackbar,
   TextField,
   Typography,
@@ -19,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -61,24 +58,11 @@ function LoginPage() {
 
         <TextField
           label="Password"
-          type={showPassword ? "text" : "password"}
+          type="password"
           fullWidth
           margin="normal"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="Toggle password visibility"
-                  onClick={() => setShowPassword(!showPassword)}
-                  edge="end"
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
         />
 
         <IconButton
