@@ -254,7 +254,7 @@ function DashboardPage() {
 
                           <Button
                             aria-label="Unenroll from course"
-                            variant="outlined"
+                            variant="contained"
                             color="error"
                             sx={{
                               mt: 2,

@@ -39,6 +39,7 @@ export async function createEnrollment(courseId) {
 
   return response.json();
 }
+
 export async function deleteEnrollment(enrollmentId) {
   const token = localStorage.getItem("token");
 
