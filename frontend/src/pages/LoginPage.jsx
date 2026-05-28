@@ -12,9 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
 import { loginUser } from "../services/authService";
 
 import { useNavigate } from "react-router-dom";
@@ -77,23 +74,20 @@ function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   edge="end"
                 >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  {showPassword ? "Hide" : "Show"}
                 </IconButton>
               </InputAdornment>
             ),
           }}
         />
 
-        <Button
-          aria-label="Login"
-          type="submit"
-          variant="contained"
-          fullWidth
-          sx={{ mt: 2 }}
-          disabled={loading}
+        <IconButton
+          aria-label="Toggle password visibility"
+          onClick={() => setShowPassword(!showPassword)}
+          edge="end"
         >
-          {loading ? "Logging in..." : "Login"}
-        </Button>
+          {showPassword ? "Hide" : "Show"}
+        </IconButton>
 
         <Snackbar
           open={openSnackbar}
