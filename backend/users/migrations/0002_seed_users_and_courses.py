@@ -41,6 +41,37 @@ def seed_users_and_courses(apps, schema_editor):
         },
     )
 
+        Course.objects.get_or_create(
+        title="JavaScript Essentials",
+        defaults={
+            "description": "Learn core JavaScript concepts including variables, functions, arrays, objects, and DOM interaction.",
+            "teacher": teacher,
+        },
+    )
+
+    Course.objects.get_or_create(
+        title="Database Fundamentals",
+        defaults={
+            "description": "Understand relational databases, SQL queries, normalization, and data modelling concepts.",
+            "teacher": teacher,
+        },
+    )
+
+    Course.objects.get_or_create(
+        title="Advanced React",
+        defaults={
+            "description": "Build modern React applications using hooks, routing, state management, and reusable components.",
+            "teacher": teacher,
+        },
+    )
+
+    Course.objects.get_or_create(
+        title="Django REST APIs",
+        defaults={
+            "description": "Learn how to build secure RESTful APIs using Django REST Framework and token authentication.",
+            "teacher": teacher,
+        },
+    )
 
 class Migration(migrations.Migration):
 
