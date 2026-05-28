@@ -39,3 +39,18 @@ export async function createEnrollment(courseId) {
 
   return response.json();
 }
+export async function deleteEnrollment(enrollmentId) {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(`${ENROLLMENTS_URL}${enrollmentId}/`, {
+    method: "DELETE",
+
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete enrollment");
+  }
+}

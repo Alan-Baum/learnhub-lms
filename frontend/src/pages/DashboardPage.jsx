@@ -20,7 +20,10 @@ import {
 } from "@mui/material";
 
 import { getCurrentUser } from "../services/userService";
-import { getEnrollments } from "../services/enrollmentService";
+import {
+  getEnrollments,
+  deleteEnrollment,
+} from "../services/enrollmentService";
 import { getCourses, deleteCourse } from "../services/courseService";
 
 function DashboardPage() {
@@ -83,6 +86,26 @@ function DashboardPage() {
     } finally {
       setDeleteDialogOpen(false);
       setSelectedCourseId(null);
+    }
+  };
+
+  const handleUnenroll = async (enrollmentId) => {
+    try {
+      await deleteEnrollment(enrollmentId);
+
+      setEnrollments(
+        enrollments.filter((enrollment) => enrollment.id !== enrollmentId),
+      );
+
+      setSnackbarSeverity("success");
+      setSnackbarMessage("Successfully unenrolled.");
+      setOpenSnackbar(true);
+    } catch (error) {
+      console.error(error);
+
+      setSnackbarSeverity("error");
+      setSnackbarMessage("Failed to unenroll.");
+      setOpenSnackbar(true);
     }
   };
 
@@ -227,6 +250,20 @@ function DashboardPage() {
                             }
                           >
                             Continue Learning
+                          </Button>
+
+                          <Button
+                            aria-label="Unenroll from course"
+                            variant="outlined"
+                            color="error"
+                            sx={{
+                              mt: 2,
+                              ml: { xs: 0, sm: 2 },
+                              width: { xs: "100%", sm: "auto" },
+                            }}
+                            onClick={() => handleUnenroll(enrollment.id)}
+                          >
+                            Unenroll
                           </Button>
                         </CardContent>
                       </Card>
