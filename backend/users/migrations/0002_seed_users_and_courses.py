@@ -41,7 +41,7 @@ def seed_users_and_courses(apps, schema_editor):
         },
     )
 
-        Course.objects.get_or_create(
+    Course.objects.get_or_create(
         title="JavaScript Essentials",
         defaults={
             "description": "Learn core JavaScript concepts including variables, functions, arrays, objects, and DOM interaction.",
