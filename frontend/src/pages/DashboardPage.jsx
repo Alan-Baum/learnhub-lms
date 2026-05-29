@@ -19,7 +19,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import { getCurrentUser } from "../services/userService";
+import { getCurrentUser, getUsers } from "../services/userService";
 import {
   getEnrollments,
   deleteEnrollment,
@@ -30,6 +30,8 @@ function DashboardPage() {
   const [user, setUser] = useState(null);
   const [enrollments, setEnrollments] = useState([]);
   const [teacherCourses, setTeacherCourses] = useState([]);
+  const [adminCourses, setAdminCourses] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -42,16 +44,18 @@ function DashboardPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    Promise.all([getCurrentUser(), getEnrollments(), getCourses()])
-      .then(([userData, enrollmentData, courseData]) => {
+    Promise.all([getCurrentUser(), getEnrollments(), getCourses(), getUsers()])
+      .then(([userData, enrollmentData, courseData, usersData]) => {
         setUser(userData);
         setEnrollments(enrollmentData);
+        setUsers(usersData);
 
         const teacherOwnedCourses = courseData.filter(
           (course) => course.teacher_name === userData.username,
         );
 
         setTeacherCourses(teacherOwnedCourses);
+        setAdminCourses(courseData);
       })
       .catch((error) => {
         console.error(error);
@@ -72,6 +76,10 @@ function DashboardPage() {
 
       setTeacherCourses(
         teacherCourses.filter((course) => course.id !== selectedCourseId),
+      );
+
+      setAdminCourses(
+        adminCourses.filter((course) => course.id !== selectedCourseId),
       );
 
       setSnackbarSeverity("success");
@@ -265,6 +273,109 @@ function DashboardPage() {
                           >
                             Unenroll
                           </Button>
+                        </CardContent>
+                      </Card>
+                    ))
+                  )}
+                </CardContent>
+              </Card>
+            </Box>
+          )}
+
+          {user.role === "admin" && (
+            <Box sx={{ mt: 4 }}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Admin Tools
+                  </Typography>
+
+                  <Typography>
+                    Manage courses and view registered users.
+                  </Typography>
+
+                  <Button
+                    variant="contained"
+                    sx={{ mt: 2 }}
+                    onClick={() => navigate("/create-course")}
+                  >
+                    Create Course
+                  </Button>
+
+                  <Typography variant="h6" component="h3" sx={{ mt: 4 }}>
+                    Manage Courses
+                  </Typography>
+
+                  {adminCourses.length === 0 ? (
+                    <Typography sx={{ mt: 2 }}>
+                      No courses available.
+                    </Typography>
+                  ) : (
+                    adminCourses.map((course) => (
+                      <Card key={course.id} sx={{ mt: 2 }}>
+                        <CardContent>
+                          <Typography variant="h6" component="h4">
+                            {course.title}
+                          </Typography>
+
+                          <Typography variant="body2" sx={{ mt: 1 }}>
+                            {course.description}
+                          </Typography>
+
+                          <Button
+                            aria-label="Edit course"
+                            variant="contained"
+                            sx={{
+                              mt: 2,
+                              mr: { xs: 0, sm: 2 },
+                              mb: { xs: 2, sm: 0 },
+                              width: { xs: "100%", sm: "auto" },
+                            }}
+                            onClick={() =>
+                              navigate(`/edit-course/${course.id}`)
+                            }
+                          >
+                            Edit Course
+                          </Button>
+
+                          <Button
+                            aria-label="Delete course"
+                            variant="contained"
+                            color="error"
+                            sx={{
+                              mt: 2,
+                              width: { xs: "100%", sm: "auto" },
+                            }}
+                            onClick={() => handleDeleteCourse(course.id)}
+                          >
+                            Delete Course
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    ))
+                  )}
+
+                  <Typography variant="h6" component="h3" sx={{ mt: 4 }}>
+                    Manage Users
+                  </Typography>
+
+                  {users.length === 0 ? (
+                    <Typography sx={{ mt: 2 }}>No users available.</Typography>
+                  ) : (
+                    users.map((listedUser) => (
+                      <Card key={listedUser.id} sx={{ mt: 2 }}>
+                        <CardContent>
+                          <Typography variant="h6" component="h4">
+                            {listedUser.username}
+                          </Typography>
+
+                          <Typography sx={{ mt: 1 }}>
+                            Role: {listedUser.role}
+                          </Typography>
+
+                          <Typography sx={{ mt: 1 }}>
+                            Email: {listedUser.email || "No email provided"}
+                          </Typography>
                         </CardContent>
                       </Card>
                     ))
