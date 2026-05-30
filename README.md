@@ -195,12 +195,6 @@ All automated and manual tests completed successfully.
 - Authentication Tests: Passed
 - CRUD Workflow Tests: Passed
 
-### Tools
-
-- Git
-- GitHub
-- Lighthouse
-- VS Code
 
 ---
 
