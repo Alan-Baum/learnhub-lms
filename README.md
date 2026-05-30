@@ -51,7 +51,6 @@ Password: password123
 Username: admin1
 Password: password123
 
-
 ---
 
 ## Features
@@ -108,12 +107,6 @@ Password: password123
 | Testing        | Vitest, React Testing Library, Django APITestCase |
 | Tools          | Git, GitHub, Lighthouse, VS Code                  |
 
-### Testing
-
-- Vitest
-- React Testing Library
-- Django REST Framework APITestCase
-
 ## External Libraries
 
 The project uses several external libraries to improve development efficiency, user experience, and testing.
@@ -137,22 +130,6 @@ Used to implement automated frontend component testing.
 ### React Testing Library
 
 Used to test React components from the user's perspective and verify UI behaviour.
-
-### Frontend
-
-- React
-- Vite
-- React Router
-- Material UI (MUI)
-
-### Backend
-
-- Django
-- Django REST Framework
-
-### Database
-
-- SQLite
 
 ## Testing
 
