@@ -51,35 +51,6 @@ Password: password123
 Username: admin1
 Password: password123
 
-### Teacher Account
-
-Username: teacher1
-Password: password123
-
-### Student Account
-
-Username: student1
-Password: password123
-
-### Admin Account
-
-Username: admin1
-Password: password123
-
-### Teacher Account
-
-Username: teacher1
-Password: password123
-
-### Student Account
-
-Username: student1
-Password: password123
-
-### Admin Account
-
-Username: admin1
-Password: password123
 
 ---
 
