@@ -71,7 +71,7 @@ function CourseCard({ course, isEnrolled, onEnroll }) {
           {course.description}
         </Typography>
 
-        <Typography variant="subtitle2" sx={{ mb: 2 }}>
+        <Typography variant="subtitle2" component="p" sx={{ mb: 2 }}>
           Teacher: {course.teacher_name}
         </Typography>
 

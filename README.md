@@ -128,20 +128,44 @@ Password: password123
 
 ## Technologies Used
 
-| Category | Technologies |
-|----------|-------------|
-| Frontend | React, Vite, React Router, Material UI |
-| Backend | Django, Django REST Framework |
-| Database | SQLite |
-| Authentication | Token Authentication |
-| Testing | Vitest, React Testing Library, Django APITestCase |
-| Tools | Git, GitHub, Lighthouse, VS Code |
+| Category       | Technologies                                      |
+| -------------- | ------------------------------------------------- |
+| Frontend       | React, Vite, React Router, Material UI            |
+| Backend        | Django, Django REST Framework                     |
+| Database       | SQLite                                            |
+| Authentication | Token Authentication                              |
+| Testing        | Vitest, React Testing Library, Django APITestCase |
+| Tools          | Git, GitHub, Lighthouse, VS Code                  |
 
 ### Testing
 
 - Vitest
 - React Testing Library
 - Django REST Framework APITestCase
+
+## External Libraries
+
+The project uses several external libraries to improve development efficiency, user experience, and testing.
+
+### Material UI (MUI)
+
+Used to provide responsive, accessible, and professionally styled React components such as buttons, forms, cards, alerts, and navigation elements.
+
+### React Router
+
+Used for client-side routing and navigation between pages including login, dashboard, courses, and course detail views.
+
+### Django REST Framework
+
+Used to build RESTful API endpoints for authentication, users, courses, and enrollments.
+
+### Vitest
+
+Used to implement automated frontend component testing.
+
+### React Testing Library
+
+Used to test React components from the user's perspective and verify UI behaviour.
 
 ### Frontend
 
@@ -194,15 +218,34 @@ Result:
 
 - 1 component test passed successfully
 
-### Manual Testing
+### Manual UI Testing
 
-- CRUD workflow testing
 - Authentication testing
+- Course CRUD workflow testing
 - Enrollment testing
-- Role-based dashboard testing
-- Responsive layout testing
+- Unenrollment testing
+- Student dashboard testing
+- Teacher dashboard testing
+- Admin dashboard testing
+- User management testing
+- Protected route testing
+- HTML structure validation
+- CSS responsive layout testing
+- Mobile device testing
+- Accessibility testing
 - Lighthouse accessibility testing
-- Production build testing
+- Production deployment testing
+
+### Test Results
+
+All automated and manual tests completed successfully.
+
+- Django API Tests: Passed
+- React Component Tests: Passed
+- Responsive Design Tests: Passed
+- Accessibility Tests: Passed
+- Authentication Tests: Passed
+- CRUD Workflow Tests: Passed
 
 ### Tools
 
