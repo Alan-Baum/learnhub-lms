@@ -21,19 +21,24 @@ function Navbar() {
 
   return (
     <AppBar position="static">
-      <Toolbar sx={{ position: "relative" }}>
+      <Toolbar
+        sx={{
+          flexDirection: { xs: "column", sm: "row" },
+          gap: { xs: 1, sm: 0 },
+          py: { xs: 1, sm: 0 },
+        }}
+      >
         <Typography
           variant="h6"
           sx={{
-            position: "absolute",
-            left: "50%",
-            transform: "translateX(-50%)",
+            flexGrow: 1,
+            textAlign: { xs: "center", sm: "left" },
           }}
         >
           LearnHub LMS
         </Typography>
 
-        <Box sx={{ ml: "auto" }}>
+        <Box>
           <Button color="inherit" href="/">
             Courses
           </Button>
