@@ -4,42 +4,84 @@
 
 LearnHub LMS is a full-stack Learning Management System built with Django REST Framework and React. The application allows teachers to create and manage courses while students can browse and enroll in available learning content.
 
-The project demonstrates full-stack web development skills including authentication, API development, frontend routing, responsive UI design, accessibility improvements, and CRUD functionality.
+The project demonstrates full-stack web development skills including authentication, API development, frontend routing, responsive UI design, accessibility improvements, CRUD functionality, role-based access control, automated testing, and deployment.
 
 ## Key Achievements
 
 - Full-stack Django + React application
 - REST API integration using Django REST Framework
-- Authentication and protected routes
-- Teacher and student role workflows
+- Token authentication and protected routes
+- Student, Teacher, and Admin role workflows
 - Full CRUD course management
 - Enrollment system with real-time UI updates
 - Responsive Material UI interface
 - Lighthouse Accessibility Score: 100
-- Production build successfully tested
+- Automated backend and frontend testing
+- Production deployment using Railway and Netlify
 - Structured Git commit history and documentation
 
 ---
 
 ## Live Deployment
 
-Frontend:
+### Frontend
+
 https://learnhub-lms-alan.netlify.app
 
-Backend API:
+### Backend API
+
 https://learnhub-lms-production-985e.up.railway.app/api/courses/
+
+---
 
 ## Demo Accounts
 
 ### Teacher Account
 
-Username: teacher1  
+Username: teacher1
 Password: password123
 
 ### Student Account
 
-Username: student1  
+Username: student1
 Password: password123
+
+### Admin Account
+
+Username: admin1
+Password: password123
+
+### Teacher Account
+
+Username: teacher1
+Password: password123
+
+### Student Account
+
+Username: student1
+Password: password123
+
+### Admin Account
+
+Username: admin1
+Password: password123
+
+### Teacher Account
+
+Username: teacher1
+Password: password123
+
+### Student Account
+
+Username: student1
+Password: password123
+
+### Admin Account
+
+Username: admin1
+Password: password123
+
+---
 
 ## Features
 
@@ -57,12 +99,24 @@ Password: password123
 - Student login authentication
 - Browse available courses
 - Enroll in courses
+- Unenroll from courses
 - Student learning dashboard
 - Continue Learning workflow
+
+### Admin Features
+
+- Admin login authentication
+- Admin dashboard
+- View all registered users
+- Manage all courses
+- Create courses
+- Edit courses
+- Delete courses
 
 ### General Features
 
 - Protected routes
+- Role-based access control
 - Snackbar feedback notifications
 - Responsive Material UI design
 - Accessibility improvements
@@ -74,13 +128,20 @@ Password: password123
 
 ## Technologies Used
 
-| Category       | Technologies                           |
-| -------------- | -------------------------------------- |
-| Frontend       | React, Vite, React Router, Material UI |
-| Backend        | Django, Django REST Framework          |
-| Database       | SQLite                                 |
-| Authentication | Token Authentication                   |
-| Tools          | Git, GitHub, Lighthouse, VS Code       |
+| Category | Technologies |
+|----------|-------------|
+| Frontend | React, Vite, React Router, Material UI |
+| Backend | Django, Django REST Framework |
+| Database | SQLite |
+| Authentication | Token Authentication |
+| Testing | Vitest, React Testing Library, Django APITestCase |
+| Tools | Git, GitHub, Lighthouse, VS Code |
+
+### Testing
+
+- Vitest
+- React Testing Library
+- Django REST Framework APITestCase
 
 ### Frontend
 
@@ -93,7 +154,55 @@ Password: password123
 
 - Django
 - Django REST Framework
+
+### Database
+
 - SQLite
+
+## Testing
+
+### Automated Testing
+
+#### Django API Tests
+
+Implemented using Django REST Framework APITestCase.
+
+Tests include:
+
+- Course list endpoint returns data correctly
+- Authenticated teacher can create a course
+
+Result:
+
+- 2 automated API tests passed successfully
+
+#### React Component Testing
+
+Implemented using:
+
+- Vitest
+- React Testing Library
+
+Tests include:
+
+- Login page renders correctly
+- Username field renders
+- Password field renders
+- Login button renders
+
+Result:
+
+- 1 component test passed successfully
+
+### Manual Testing
+
+- CRUD workflow testing
+- Authentication testing
+- Enrollment testing
+- Role-based dashboard testing
+- Responsive layout testing
+- Lighthouse accessibility testing
+- Production build testing
 
 ### Tools
 
@@ -150,7 +259,19 @@ Students can:
 
 - Browse courses
 - Enroll in courses
+- Unenroll from courses
 - Access enrolled learning content
+
+### Admin Account
+
+Administrators can:
+
+- View all registered users
+- Manage all courses
+- Create courses
+- Edit courses
+- Delete courses
+- Access the Admin Dashboard
 
 ---
 
@@ -270,13 +391,105 @@ Accessibility improvements were implemented throughout the application including
 
 ---
 
+### Admin Dashboard
+
+![Admin Dashboard](screenshots/17-admin-dashboard.png)
+
+---
+
+### User Management
+
+![User Management](screenshots/18-admin-user-management.png)
+
+### Django REST API Production
+
+![Django REST API](screenshots/19-django-rest-api-production.png)
+
+---
+
+### Production Teacher Dashboard
+
+![Production Teacher Dashboard](screenshots/20-production-teacher-dashboard-live.png)
+
+---
+
+### Production Student Dashboard
+
+![Production Student Dashboard](screenshots/21-production-student-dashboard-live.png)
+
+---
+
+### Full Stack Production Application
+
+![Full Stack Production](screenshots/22-full-stack-production-working.png)
+
+---
+
+### Course CRUD Functionality
+
+![Course CRUD Functionality](screenshots/23-production-course-crud-working.png)
+
+---
+
+### Responsive Mobile Production View
+
+![Responsive Mobile Production View](screenshots/24-responsive-mobile-production-view.png)
+
+---
+
+### Admin Dashboard
+
+![Admin Dashboard](screenshots/25-admin-dashboard.png)
+
+---
+
+### Admin User Management
+
+![Admin User Management](screenshots/26-admin-user-management.png)
+
+---
+
 ## Testing
 
-The application was tested using:
+### Automated Testing
+
+#### Django API Tests
+
+Implemented using Django REST Framework APITestCase.
+
+Tests include:
+
+- Course list endpoint returns data correctly
+- Authenticated teacher can create a course
+
+Result:
+
+- 2 automated API tests passed successfully
+
+#### React Component Testing
+
+Implemented using:
+
+- Vitest
+- React Testing Library
+
+Tests include:
+
+- Login page renders correctly
+- Username field renders
+- Password field renders
+- Login button renders
+
+Result:
+
+- 1 component test passed successfully
+
+### Manual Testing
 
 - CRUD workflow testing
 - Authentication testing
 - Enrollment testing
+- Role-based dashboard testing
 - Responsive layout testing
 - Lighthouse accessibility testing
 - Production build testing
@@ -297,3 +510,5 @@ The application was tested using:
 ## Author
 
 Alan Baum
+
+Learning People Full Stack Software Development Student
