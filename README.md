@@ -195,7 +195,6 @@ All automated and manual tests completed successfully.
 - Authentication Tests: Passed
 - CRUD Workflow Tests: Passed
 
-
 ---
 
 ## Installation
@@ -277,6 +276,20 @@ Accessibility improvements were implemented throughout the application including
 - Best Practices: 96
 
 ---
+
+## Responsive Design
+
+The application uses Material UI's responsive layout system and breakpoint-based styling to adapt across different screen sizes.
+
+Responsive improvements include:
+
+- Course cards display cleanly across mobile, tablet, and desktop devices
+- Dashboard layouts remain readable on smaller screens
+- The navigation bar adapts for mobile devices to prevent text overlap
+- Forms and buttons resize appropriately across different screen sizes
+- Mobile production testing was completed and documented
+
+Evidence of responsive testing is included in the responsive mobile production screenshot within this repository.
 
 ## Screenshots
 
