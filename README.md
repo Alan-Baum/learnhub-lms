@@ -1,23 +1,31 @@
 # LearnHub LMS
 
+> **Full-Stack Learning Management System built with Django REST Framework and React**
+
+🌐 **Live Demo:** https://learnhub-lms-alan.netlify.app
+
+📸 **Screenshots:** Scroll down to the Screenshots section below.
+
+---
+
 ## Project Overview
 
-LearnHub LMS is a full-stack Learning Management System built with Django REST Framework and React. The application allows teachers to create and manage courses while students can browse and enroll in available learning content.
+LearnHub LMS is a full-stack Learning Management System built with Django REST Framework and React. It demonstrates the design and development of a modern web application, enabling teachers to create and manage courses while students can browse, enrol and manage their learning through a secure, responsive interface.
 
-The project demonstrates full-stack web development skills including authentication, API development, frontend routing, responsive UI design, accessibility improvements, CRUD functionality, role-based access control, automated testing, and deployment.
+The project showcases secure authentication, REST API development, role-based access control, responsive user interface design, accessibility improvements, CRUD functionality, automated testing and deployment using a modern full-stack architecture.
 
 ## Key Achievements
 
 - Full-stack Django + React application
 - REST API integration using Django REST Framework
-- Token authentication and protected routes
+- Secure token-based authentication and protected routes
 - Student, Teacher, and Admin role workflows
 - Full CRUD course management
 - Enrollment system with real-time UI updates
 - Responsive Material UI interface
 - Lighthouse Accessibility Score: 100
 - Automated backend and frontend testing
-- Production deployment using Railway and Netlify
+- Deployed using Railway and Netlify
 - Structured Git commit history and documentation
 
 ---
@@ -293,19 +301,24 @@ Evidence of responsive testing is included in the responsive mobile production s
 
 ## Screenshots
 
-### Login Page
+### User Login
+The secure login page provides authenticated access for students, teachers and administrators.
 
 ![Login Page](screenshots/01-login-page.png)
 
 ---
 
-### Teacher Dashboard
+### Teacher Login
 
-![Teacher Dashboard](screenshots/02-teacher-dashboard.png)
+Teachers can securely sign in to access course management features through their dedicated teacher account.
+
+![Teacher Login](screenshots/02-teacher-dashboard.png)
 
 ---
 
 ### Teacher Course Management
+
+Teachers can create, edit and delete courses through a simple, intuitive interface designed for efficient course administration.
 
 ![Teacher Course Management](screenshots/03-teacher-course-management.png)
 
