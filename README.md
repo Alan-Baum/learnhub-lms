@@ -339,23 +339,31 @@ Teachers can create, edit and delete courses through a simple, intuitive interfa
 
 ### Student Dashboard
 
+Students can access their personalised learning dashboard to view enrolled courses and continue their learning journey.
+
 ![Student Dashboard](screenshots/06-student-dashboard.png)
 
 ---
 
 ### Course Detail Page
 
+Students can view detailed course information, including the course description, teacher and enrolment status before continuing their learning.
+
 ![Course Detail Page](screenshots/07-course-detail-page.png)
 
 ---
 
-### Login Snackbar Feedback
+### Login Validation Feedback
+
+The application provides clear, real-time feedback for failed login attempts, helping users identify authentication errors quickly and improving the overall user experience.
 
 ![Login Snackbar](screenshots/08-login-snackbar.png)
 
 ---
 
 ### Course Detail Dashboard Navigation
+
+Students can easily return to their dashboard after viewing course information, providing a simple and intuitive navigation experience.
 
 ![Course Detail Navigation](screenshots/09-course-detail-dashboard-navigation.png)
 
