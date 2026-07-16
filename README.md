@@ -371,7 +371,7 @@ Students can easily return to their dashboard after viewing course information, 
 
 ### Lighthouse Accessibility Audit
 
-![Lighthouse Audit](screenshots/10-lighthouse-accessibility-audit.png)
+![Lighthouse Audit](screenshots/10-lighthouse-accessibility-audit-fixed.png)
 
 ---
 
