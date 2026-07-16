@@ -302,6 +302,7 @@ Evidence of responsive testing is included in the responsive mobile production s
 ## Screenshots
 
 ### User Login
+
 The secure login page provides authenticated access for students, teachers and administrators.
 
 ![Login Page](screenshots/01-login-page.png)
