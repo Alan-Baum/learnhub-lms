@@ -371,6 +371,8 @@ Students can easily return to their dashboard after viewing course information, 
 
 ### Lighthouse Accessibility Audit
 
+The application was evaluated using Google Lighthouse to identify accessibility improvements and validate compliance with modern web accessibility standards.
+
 ![Lighthouse Audit](screenshots/10-lighthouse-accessibility-audit-fixed.png)
 
 ---
