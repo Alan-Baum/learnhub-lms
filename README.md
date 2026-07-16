@@ -301,19 +301,24 @@ Evidence of responsive testing is included in the responsive mobile production s
 
 ## Screenshots
 
-### Login Page
+### User Login
+The secure login page provides authenticated access for students, teachers and administrators.
 
 ![Login Page](screenshots/01-login-page.png)
 
 ---
 
-### Teacher Dashboard
+### Teacher Login
 
-![Teacher Dashboard](screenshots/02-teacher-dashboard.png)
+Teachers can securely sign in to access course management features through their dedicated teacher account.
+
+![Teacher Login](screenshots/02-teacher-dashboard.png)
 
 ---
 
 ### Teacher Course Management
+
+Teachers can create, edit and delete courses through a simple, intuitive interface designed for efficient course administration.
 
 ![Teacher Course Management](screenshots/03-teacher-course-management.png)
 
