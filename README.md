@@ -427,7 +427,7 @@ After successfully enrolling in a course, the application displays a centred con
 
 ### Admin Dashboard
 
-![Admin Dashboard](screenshots/17-admin-dashboard.png)
+![Admin Dashboard](screenshots/25-admin-dashboard.png)
 
 ---
 
