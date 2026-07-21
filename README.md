@@ -32,15 +32,11 @@ The project showcases secure authentication, REST API development, role-based ac
 
 ## Live Deployment
 
-Access the live LearnHub LMS application and its deployed Django REST Framework API using the links below.
+**Note:** This project was originally deployed using Netlify (frontend) and Railway (backend). The Railway trial has since expired, so the live backend is no longer available. The application can still be run locally using the installation instructions below.
 
 ### Frontend
 
-https://learnhub-lms-alan.netlify.app
-
-### Backend API
-
-https://learnhub-lms-production-985e.up.railway.app/api/courses/
+The frontend deployment may have limited functionality while the backend is offline.
 
 ---
 
