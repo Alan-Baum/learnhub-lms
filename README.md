@@ -1,10 +1,10 @@
 # LearnHub LMS
 
-> **Full-Stack Learning Management System built with Django REST Framework and React**
+> **Full-Stack Learning Management System developed with Django REST Framework and React**
 
 🌐 **Live Demo:** https://learnhub-lms-alan.netlify.app
 
-📸 **Screenshots:** Scroll down to the Screenshots section below.
+📸 **Screenshots:** Explore the application's features and production deployment in the screenshots section below.
 
 ---
 
@@ -16,7 +16,7 @@ The project showcases secure authentication, REST API development, role-based ac
 
 ## Key Achievements
 
-- Full-stack Django + React application
+- Full-stack Learning Management System built with Django REST Framework and React
 - REST API integration using Django REST Framework
 - Secure token-based authentication and protected routes
 - Student, Teacher, and Admin role workflows
@@ -31,6 +31,8 @@ The project showcases secure authentication, REST API development, role-based ac
 ---
 
 ## Live Deployment
+
+Access the live LearnHub LMS application and its deployed Django REST Framework API using the links below.
 
 ### Frontend
 
@@ -47,16 +49,19 @@ https://learnhub-lms-production-985e.up.railway.app/api/courses/
 ### Teacher Account
 
 Username: teacher1
+
 Password: password123
 
 ### Student Account
 
 Username: student1
+
 Password: password123
 
 ### Admin Account
 
 Username: admin1
+
 Password: password123
 
 ---
@@ -65,7 +70,7 @@ Password: password123
 
 ### Teacher Features
 
-- Teacher login authentication
+- Teacher authentication
 - Create new courses
 - Edit existing courses
 - Delete courses
@@ -74,7 +79,7 @@ Password: password123
 
 ### Student Features
 
-- Student login authentication
+- Student authentication
 - Browse available courses
 - Enroll in courses
 - Unenroll from courses
@@ -83,7 +88,7 @@ Password: password123
 
 ### Admin Features
 
-- Admin login authentication
+- Admin authentication
 - Admin dashboard
 - View all registered users
 - Manage all courses
@@ -99,7 +104,7 @@ Password: password123
 - Responsive Material UI design
 - Accessibility improvements
 - Semantic HTML structure
-- Production build testing
+- Production deployment testing
 - Lighthouse accessibility optimisation
 
 ---
@@ -111,7 +116,7 @@ Password: password123
 | Frontend       | React, Vite, React Router, Material UI            |
 | Backend        | Django, Django REST Framework                     |
 | Database       | SQLite                                            |
-| Authentication | Token Authentication                              |
+| Authentication | JWT Token Authentication                          |
 | Testing        | Vitest, React Testing Library, Django APITestCase |
 | Tools          | Git, GitHub, Lighthouse, VS Code                  |
 
@@ -137,7 +142,7 @@ Used to implement automated frontend component testing.
 
 ### React Testing Library
 
-Used to test React components from the user's perspective and verify UI behaviour.
+Used to test React components from the user's perspective, helping verify user interface behaviour and component interactions.
 
 ## Testing
 
@@ -152,9 +157,11 @@ Tests include:
 - Course list endpoint returns data correctly
 - Authenticated teacher can create a course
 
-Result:
+Results:
 
-- 2 automated API tests passed successfully
+- ✅ Course List API endpoint tested successfully.
+- ✅ Authenticated teacher course creation tested successfully.
+- ✅ All automated Django API tests passed.
 
 #### React Component Testing
 
@@ -170,39 +177,45 @@ Tests include:
 - Password field renders
 - Login button renders
 
-Result:
+Results:
 
-- 1 component test passed successfully
+- ✅ Login page rendered successfully.
+- ✅ Username field rendered correctly.
+- ✅ Password field rendered correctly.
+- ✅ Login button rendered correctly.
+- ✅ All React component tests passed.
 
-### Manual UI Testing
-
+### Functional Testing
 - Authentication testing
 - Course CRUD workflow testing
-- Enrollment testing
-- Unenrollment testing
+- Enrolment testing
+- Unenrolment testing
 - Student dashboard testing
 - Teacher dashboard testing
 - Admin dashboard testing
 - User management testing
 - Protected route testing
+
+### User Interface Testing
 - HTML structure validation
-- CSS responsive layout testing
+- Responsive layout testing
 - Mobile device testing
 - Accessibility testing
 - Lighthouse accessibility testing
+
+### Deployment Testing
 - Production deployment testing
 
 ### Test Results
 
-All automated and manual tests completed successfully.
+All automated and manual tests were completed successfully.
 
-- Django API Tests: Passed
-- React Component Tests: Passed
-- Responsive Design Tests: Passed
-- Accessibility Tests: Passed
-- Authentication Tests: Passed
-- CRUD Workflow Tests: Passed
-
+- ✅ Django API Tests — Passed
+- ✅ React Component Tests — Passed
+- ✅ Responsive Design Tests — Passed
+- ✅ Accessibility Tests — Passed
+- ✅ Authentication Tests — Passed
+- ✅ CRUD Workflow Tests — Passed
 ---
 
 ## Installation
@@ -218,13 +231,25 @@ cd learnhub-lms
 
 ```bash
 cd backend
+#### Windows
+
+```bash
 venv\Scripts\activate
+```
+
+#### macOS / Linux
+
+```bash
+source venv/bin/activate
+```
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
 
 ### Frontend Setup
+
+Follow the steps below to run LearnHub LMS locally for development and testing.
 
 ```bash
 cd frontend
@@ -235,6 +260,8 @@ npm run dev
 ---
 
 ## User Roles
+
+LearnHub LMS provides role-based access control, giving each type of user access to features appropriate to their responsibilities.
 
 ### Teacher Account
 
@@ -269,7 +296,7 @@ Administrators can:
 
 ## Accessibility
 
-Accessibility improvements were implemented throughout the application including:
+Accessibility improvements were implemented throughout the application to improve usability, keyboard navigation, and compliance with modern web accessibility best practices, including:
 
 - Semantic heading hierarchy
 - Main landmark structure
@@ -297,7 +324,7 @@ Responsive improvements include:
 - Forms and buttons resize appropriately across different screen sizes
 - Mobile production testing was completed and documented
 
-Evidence of responsive testing is included in the responsive mobile production screenshot within this repository.
+Evidence of responsive behaviour is demonstrated in the Responsive Mobile Production View screenshot included in this repository.
 
 ## Screenshots
 
