@@ -32,12 +32,10 @@ The project showcases secure authentication, REST API development, role-based ac
 
 ## Live Deployment
 
-**Note:** This project was originally deployed using Netlify (frontend) and Railway (backend). The Railway trial has since expired, so the live backend is no longer available. The application can still be run locally using the installation instructions below.
+**Note:** The frontend remains deployed on Netlify. The backend was originally deployed on Railway, but the free trial has expired, so API-dependent functionality is currently unavailable. The project can still be run locally using the installation instructions below.
 
 ### Frontend
-
-The frontend deployment may have limited functionality while the backend is offline.
-
+https://learnhub-lms-alan.netlify.app
 ---
 
 ## Demo Accounts
