@@ -231,6 +231,9 @@ cd learnhub-lms
 
 ```bash
 cd backend
+python -m venv venv
+```
+
 #### Windows
 
 ```bash
@@ -242,6 +245,8 @@ venv\Scripts\activate
 ```bash
 source venv/bin/activate
 ```
+
+```bash
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
@@ -532,53 +537,6 @@ The production administrator user management interface enables administrators to
 
 ---
 
-## Testing
-
-### Automated Testing
-
-#### Django API Tests
-
-Implemented using Django REST Framework APITestCase.
-
-Tests include:
-
-- Course list endpoint returns data correctly
-- Authenticated teacher can create a course
-
-Result:
-
-- 2 automated API tests passed successfully
-
-#### React Component Testing
-
-Implemented using:
-
-- Vitest
-- React Testing Library
-
-Tests include:
-
-- Login page renders correctly
-- Username field renders
-- Password field renders
-- Login button renders
-
-Result:
-
-- 1 component test passed successfully
-
-### Manual Testing
-
-- CRUD workflow testing
-- Authentication testing
-- Enrollment testing
-- Role-based dashboard testing
-- Responsive layout testing
-- Lighthouse accessibility testing
-- Production build testing
-
----
-
 ## Future Improvements
 
 - Course search functionality
@@ -592,6 +550,6 @@ Result:
 
 ## Author
 
-Alan Baum
+**Alan Baum**
 
-Learning People Full Stack Software Development Student
+Full Stack Software Development Student at Learning People
