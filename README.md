@@ -425,7 +425,7 @@ After successfully enrolling in a course, the application displays a centred con
 
 ---
 
-### Admin Dashboard
+### Production Admin Dashboard
 
 The administrator dashboard provides full management capabilities, allowing administrators to create, edit and delete courses while overseeing the learning platform through a dedicated administrative interface.
 
@@ -451,11 +451,15 @@ The deployed Django REST Framework API provides secure RESTful endpoints for cou
 
 ### Production Teacher Dashboard
 
+The live production teacher dashboard demonstrates the deployed application, allowing teachers to create, edit and manage courses through the production environment.
+
 ![Production Teacher Dashboard](screenshots/20-production-teacher-dashboard-live.png)
 
 ---
 
 ### Production Student Dashboard
+
+The live production student dashboard provides students with access to their enrolled courses, allowing them to continue learning through the deployed LearnHub LMS application.
 
 ![Production Student Dashboard](screenshots/21-production-student-dashboard-live.png)
 
@@ -463,11 +467,15 @@ The deployed Django REST Framework API provides secure RESTful endpoints for cou
 
 ### Full Stack Production Application
 
+The fully deployed LearnHub LMS demonstrates the complete production application, showcasing role-based dashboards, live course management, and the integrated React frontend with Django REST Framework backend.
+
 ![Full Stack Production](screenshots/22-full-stack-production-working.png)
 
 ---
 
 ### Course CRUD Functionality
+
+Teachers can perform complete Create, Read, Update and Delete (CRUD) operations on courses through an intuitive management interface, demonstrating full course lifecycle management within the application.
 
 ![Course CRUD Functionality](screenshots/23-production-course-crud-working.png)
 
@@ -475,17 +483,23 @@ The deployed Django REST Framework API provides secure RESTful endpoints for cou
 
 ### Responsive Mobile Production View
 
+The deployed application adapts seamlessly to mobile devices, providing a responsive interface that maintains usability and accessibility across different screen sizes.
+
 ![Responsive Mobile Production View](screenshots/24-responsive-mobile-production-view.png)
 
 ---
 
-### Admin Dashboard
+### Production Admin Dashboard
+
+The production administrator dashboard provides full administrative control, enabling course management and platform oversight through the live deployed LearnHub LMS application.
 
 ![Admin Dashboard](screenshots/25-admin-dashboard.png)
 
 ---
 
-### Admin User Management
+### Production Admin User Management
+
+The production administrator user management interface enables administrators to view registered users and manage role-based access within the live LearnHub LMS application.
 
 ![Admin User Management](screenshots/26-admin-user-management.png)
 
