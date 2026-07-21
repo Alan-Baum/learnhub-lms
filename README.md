@@ -379,11 +379,15 @@ The application was evaluated using Google Lighthouse to identify accessibility 
 
 ### Lighthouse Accessibility Score
 
+Following the recommended accessibility improvements, the application achieved a Lighthouse Accessibility score of 100, demonstrating compliance with recognised web accessibility best practices.
+
 ![Lighthouse Accessibility Score](screenshots/11-lighthouse-accessibility-100.png)
 
 ---
 
 ### Courses Page Polished Layout
+
+The redesigned Courses page presents available courses in a clean, card-based layout, making it easy for students to browse course information, view enrolment status, and access learning content.
 
 ![Courses Page](screenshots/12-courses-page-polished-layout.png)
 
@@ -391,11 +395,15 @@ The application was evaluated using Google Lighthouse to identify accessibility 
 
 ### Student Dashboard Enrolled Courses
 
+The student dashboard provides a personalised learning space where enrolled courses are displayed, allowing students to quickly resume their studies through the Continue Learning feature.
+
 ![Student Dashboard Enrolled](screenshots/13-student-dashboard-enrolled-courses.png)
 
 ---
 
 ### Teacher Dashboard Polished
+
+The teacher dashboard provides a dedicated workspace for course management, enabling teachers to create new courses and manage learning content through a simple, role-based interface.
 
 ![Teacher Dashboard Polished](screenshots/14-teacher-dashboard-polished.png)
 
@@ -403,11 +411,15 @@ The application was evaluated using Google Lighthouse to identify accessibility 
 
 ### Green Enrolled Button State
 
+The application provides a clear visual indicator when a student is enrolled, replacing the enrolment action with a green Enrolled status to improve usability and reduce confusion.
+
 ![Green Enrolled Button](screenshots/15-green-enrolled-button-state.png)
 
 ---
 
-### Centered Snackbar Feedback
+### Centered Enrolment Confirmation
+
+After successfully enrolling in a course, the application displays a centred confirmation notification, providing immediate feedback that the enrolment was completed successfully.
 
 ![Centered Snackbar](screenshots/16-centered-snackbar-feedback.png)
 
