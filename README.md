@@ -427,13 +427,19 @@ After successfully enrolling in a course, the application displays a centred con
 
 ### Admin Dashboard
 
+The administrator dashboard provides full management capabilities, allowing administrators to create, edit and delete courses while overseeing the learning platform through a dedicated administrative interface.
+
 ![Admin Dashboard](screenshots/25-admin-dashboard.png)
 
 ---
 
 ### User Management
 
-![User Management](screenshots/18-admin-user-management.png)
+The administrator user management interface enables administrators to view and manage registered users, supporting secure role-based administration of the learning platform.
+
+![User Management](screenshots/26-admin-user-management.png)
+
+---
 
 ### Django REST API Production
 
