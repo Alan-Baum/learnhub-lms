@@ -443,6 +443,8 @@ The administrator user management interface enables administrators to view and m
 
 ### Django REST API Production
 
+The deployed Django REST Framework API provides secure RESTful endpoints for course management and authentication, demonstrating the production backend services that power the LearnHub LMS application.
+
 ![Django REST API](screenshots/19-django-rest-api-production.png)
 
 ---
