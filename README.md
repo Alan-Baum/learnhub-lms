@@ -4,6 +4,8 @@
 
 🌐 **Live Demo:** https://learnhub-lms-alan.netlify.app
 
+🚀 **Backend:** https://learnhub-lms-production-985e.up.railway.app
+
 📸 **Screenshots:** Explore the application's features and production deployment in the screenshots section below.
 
 ---
@@ -32,10 +34,16 @@ The project showcases secure authentication, REST API development, role-based ac
 
 ## Live Deployment
 
-**Note:** The frontend remains deployed on Netlify. The backend was originally deployed on Railway, but the free trial has expired, so API-dependent functionality is currently unavailable. The project can still be run locally using the installation instructions below.
+The application is fully deployed and operational.
 
 ### Frontend
+
 https://learnhub-lms-alan.netlify.app
+
+### Backend
+
+https://learnhub-lms-production-985e.up.railway.app
+
 ---
 
 ## Demo Accounts
